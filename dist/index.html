@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="basic">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title></title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="bower_components/normalize.css/normalize.css">
+		<link rel="stylesheet" href="styles/style.css">
+	</head>
+	<body>
+		<div ng-controller="FormCtrl">
+			<form ng-submit="submit(data)" ng-show="page === 'form'">
+				<h1>Contact Us</h1>
+				<label ng-class="error.name ? 'alert' : ''">
+					<div class="input-label">Name</div>
+					<input type="text" placeholder="Sally Smith" ng-model="data.name">
+					<p class="alert" ng-show="error.name" ng-bind="error.name"></p>
+				</label>
+				<label ng-class="error.email ? 'alert' : ''">
+					<div class="input-label">Email</div>
+					<input type="text" placeholder="ssmith@gmail.com" ng-model="data.email">
+					<p class="alert" ng-show="error.email" ng-bind="error.email"></p>
+				</label>
+				<label ng-class="error.website ? 'alert' : ''">
+					<div class="input-label">Website</div>
+					<input type="text" placeholder="http://mssmith.net" ng-model="data.website">
+					<p class="alert" ng-show="error.website" ng-bind="error.website"></p>
+				</label>
+				<label ng-class="error.message ? 'alert' : ''">
+					<div class="input-label">Message</div>
+					<textarea placeholder="A friendly message..." ng-model="data.message"></textarea>
+					<p class="alert" ng-show="error.message" ng-bind="error.message"></p>
+				</label>
+				<button type="submit">Submit</button>
+			</form>
+			<div class="success" ng-show="page === 'success'">
+				<h3>Thanks for contacting us {{ data.name }}. We have received your message and will be in touch with you shortly.</h3>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+		<script type="text/javascript" src="scripts/controllers.js"></script>
+		<script type="text/javascript" src="scripts/app.js"></script>
+	</body>
+</html>
